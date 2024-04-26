@@ -25,3 +25,16 @@ local leaderstats = Instance.new("Folder', plr)
 
                   end
   end)
+
+      -- Player Leaving Script
+
+      players.PlayerRemoving:Connect(function(plr)
+                  local s,f = pcall(function()
+                              dataStore:SetAsync(plr.UserId.."-cash", plr.leaderstats.Cash.Value)
+                        end)
+                  if s then
+                        print("Saved data")
+                  else
+                        warn("Failed to save data")
+                  end)
+      end)
